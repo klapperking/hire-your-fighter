@@ -1,6 +1,31 @@
-.navbar-lewagon {
+.navbar-container {
   justify-content: space-between;
-  background: white;
+  background: black;
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+.navbar-container h2 {
+  color: red;
+  font-family: 'Rubik Wet Paint', cursive;
+  font-style: italic;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 180px;
+}
+
+.btn-container a {
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: gray;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {

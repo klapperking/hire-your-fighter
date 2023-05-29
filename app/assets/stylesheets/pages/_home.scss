@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+.container {
+  height: 100vh;
+}
+
+.container-body {
+  height: 100vh;
+  background-image: url(https://i.redd.it/0ft94o4nxhsy.jpg);
+  background-size: cover;
+}
+
+.card-fighter-gif {
+  width: auto;
+  height: 400px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.card-fighter-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-menu {
+  width: 500px;
+  text-align: center;
+  font-size: 35px;
+  font-family: 'Rubik Wet Paint', cursive;
+  font-weight: bold;
+  color: rgb(240, 240, 240) ;
+  -webkit-text-stroke: 0.1px;
+  -webkit-text-stroke-color: red;
+}
+
+.card-menu  li {
+  list-style: none;
+
+  &:hover {
+    color: black;
+    -webkit-text-stroke: 0.1px;
+    -webkit-text-stroke-color: white;
+    cursor: pointer;
+  }
+}

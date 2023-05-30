@@ -1,3 +1,28 @@
-<h1>Fighter : <%= @fighter.name %></h1>
+<div class="container">
+  <div class="container-details">
+    <div class="card-img-attr">
+      <%= cl_image_tag @fighter.photo.key %>
+      <div class="card-attr-price">
+        <div class="card-attr">
+           <p>Strength : <%= @fighter.strength %></p>
+           <p>Defense : <%= @fighter.defense %></p>
+        </div>
+        <div class="card-price">
+          <p><%= @fighter.price %></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-description">
+      <p><%= @fighter.description %></p>
+    </div>
+    <div class="card-skill">
+      <p>Master of sword</p>
+    </div>
+    <div class="card-map">
+    </div>
+  <div class="container-form">
+  </div>
+  </div>
 <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <%= link_to "edit", edit_fighter_path(@fighter) %>
+</div>

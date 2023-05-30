@@ -1,6 +1,13 @@
 class FightersController < ApplicationController
-  before_action :set_fighter, only: %i[edit destroy]
+  before_action :set_fighter, only: %i[show edit destroy]
 
+  def index
+    @fighters = Fighter.all
+  end
+
+  def show
+  end
+  
   # GET '/fighters/new'
   def new
     @fighter = Fighter.new
@@ -40,10 +47,8 @@ class FightersController < ApplicationController
   private
 
   def fighter_params
-    params.require(:fighter).permit(%i[])
+    params.require(:fighter).permit(%i[name description price strength defense photo])
   end
-
-  protected
 
   def set_fighter
     @fighter = Fighter.find(params[:id])

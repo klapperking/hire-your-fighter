@@ -18,7 +18,7 @@ class FightersController < ApplicationController
     new_fighter = Fighter.new(fighter_params)
     new_fighter.user = current_user # current_user method from devise to access logged-in user
 
-    if new_fighter.save!
+    if new_fighter.save
       # redirect to '/fighters'
       redirect_to(fighters_path)
     else

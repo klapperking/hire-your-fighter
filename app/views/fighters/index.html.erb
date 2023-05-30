@@ -1,0 +1,4 @@
+<h1>Pick your Fighter</h1>
+<%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%= link_to "edit", edit_fighter_path(@fighter) %>
+<%= link_to "new", new_fighter_path %>

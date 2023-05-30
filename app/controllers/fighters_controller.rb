@@ -7,7 +7,7 @@ class FightersController < ApplicationController
 
   def show
   end
-  
+
   # GET '/fighters/new'
   def new
     @fighter = Fighter.new
@@ -16,11 +16,14 @@ class FightersController < ApplicationController
   # POST '/fighters/'
   def create
     new_fighter = Fighter.new(fighter_params)
+    new_fighter.user = current_user # current_user method from devise to access logged-in user
 
-    if new_fighter.save
+    if new_fighter.save!
       # redirect to '/fighters'
       redirect_to(fighters_path)
     else
+      # need fighter instance again for re-rendering the page
+      @fighter = new_fighter
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,6 +34,8 @@ class FightersController < ApplicationController
   # PATCH/PUT '/fighters/:id/'
   def update
     fighter_to_edit = Fighter.new(fighter_params)
+    fighter_to_edit.user = current_user
+
     if fighter_to_edit.update
       redirect_to(fighter_path(fighter_to_edit))
     else

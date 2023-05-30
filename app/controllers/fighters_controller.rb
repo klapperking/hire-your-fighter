@@ -1,5 +1,5 @@
 class FightersController < ApplicationController
-  before_action :set_fighter, only: %i[edit update destroy]
+  before_action :set_fighter, only: %i[edit destroy]
 
   # GET '/fighters/new'
   def new

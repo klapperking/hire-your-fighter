@@ -1,4 +1,6 @@
 <%= simple_form_for(model_instance) do |f| %>
+  <%= f.input :rating, as: :hidden %>
+  <%= f.input :stat_sum, as: :hidden %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :price, as: :integer, hint: "Price in cents"%>

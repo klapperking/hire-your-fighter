@@ -7,20 +7,23 @@ class FightersController < ApplicationController
 
   def show
   end
-  
+
   # GET '/fighters/new'
   def new
     @fighter = Fighter.new
+    @stat_num = rand(99)
   end
 
   # POST '/fighters/'
   def create
     new_fighter = Fighter.new(fighter_params)
+    new_fighter.user = current_user
 
-    if new_fighter.save
+    if new_fighter.save!
       # redirect to '/fighters'
       redirect_to(fighters_path)
     else
+      @fighter = new_fighter
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,6 +34,8 @@ class FightersController < ApplicationController
   # PATCH/PUT '/fighters/:id/'
   def update
     fighter_to_edit = Fighter.new(fighter_params)
+    fighter_to_edit.user = current_user
+
     if fighter_to_edit.update
       redirect_to(fighter_path(fighter_to_edit))
     else
@@ -47,7 +52,7 @@ class FightersController < ApplicationController
   private
 
   def fighter_params
-    params.require(:fighter).permit(%i[name description price strength defense photo])
+    params.require(:fighter).permit(%i[name description price strength defense photo user])
   end
 
   def set_fighter

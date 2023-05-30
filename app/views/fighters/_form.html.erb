@@ -1,3 +1,11 @@
-<%= simple_form_for model: fighter do |f| %>
-
+<%= simple_form_for(model_instance) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price, as: :integer, hint: "Price in cents"%>
+  <% if model_instance.new_record? %>
+    <%= f.input :strength, as: :integer %>
+    <%= f.input :defense, as: :integer %>
+  <% end %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
 <% end %>

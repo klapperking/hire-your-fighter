@@ -1,0 +1,26 @@
+.hover_character {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    text-align: center;
+  }
+}
+
+.all_characters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+
+    .character_card {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+}
+
+h1 {
+  text-align: center;
+  padding: 30px;
+  font-family: 'rubik';
+}

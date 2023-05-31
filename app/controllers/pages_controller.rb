@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home my_fighters my_bookings]
+  skip_before_action :authenticate_user!, only: %i[home]
 
   def home; end
 

@@ -1,49 +1,60 @@
-.container {
+.container-body-show {
+  width: 100vw;
+  height: auto;
+  background-image: asset-url('background.png');
+  background-size: cover;
+}
+
+.container-show {
   display: flex;
-  justify-content: space-around;
 }
 
 .container-details {
   width: 65%;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin: 50px 50px 0 50px;
 }
 
 .container-form {
   width: 30%;
-  background-color: gray;
+  border: solid 1px black;
   margin-top: 20px;
 }
 
 .card-img-attr {
   display: flex;
-  height: 400px;
-  justify-content: space-between;
+  height: 250px;
 }
 
 .card-attr-price {
-  width: 50%;
-  margin-top: 20px;
-  border: solid 1px black;
+  width: 70%;
+  margin: 20px;
+  border: solid 1px gray;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(128, 128, 128, 0.3);
+  border-radius: 5px;
+  align-items: center;
 }
 
 .card-img {
-  width: 400px;
+  width: 250px;
   height: auto;
-  background-size: cover;
-  border-radius: 50px;
+  border-radius: 50px 50px 0 50px;
 
   i {
     position: relative;
-    top: 360px;
-    left: 360px;
+    top: 227px;
+    left: 217px;
     color: white
   }
 
 }
 
 .card-attr {
+  margin-left: 20px;
+  width: 50%;
 
   p {
     margin-left: 10px;
@@ -55,30 +66,50 @@
 }
 
 .card-description {
-  border: solid 1px black;
-  border-radius: 20px;
+  border: solid 1px gray;
+  border-radius: 10px;
   margin: 10px 0 10px 0;
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.3);
 }
 
 .card-price {
-  margin: 10px 0 10px 0;
-  height: 40%;
+  margin: 10px 20px 10px 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px 20px 5px 20px;
+  border-radius: 5px;
+  background-color: rgb(128, 128, 128);
 
   h2 {
     font-family: 'Rubik Wet Paint', cursive;
     font-style: italic;
+    margin: 0;
   }
 
   h1 {
     font-family: 'Rubik';
+    padding: 0;
+    margin: 0;
   }
 }
 
 .card-skill {
-  border: solid 1px black;
+  border: solid 1px gray;
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.card-map {
+  border: solid 1px gray;
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+  text-align: center;
+  height: 250px;
+  background-color: rgba(128, 128, 128, 0.3);
 }
 
 .progress-bar {

@@ -15,10 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body style="position: relative;min-height:100vh">
+    <%= render 'shared/flashes' %>
     <%= render "layouts/navbar" %>
     <%= yield %>
-    <%= render "layouts/footer" %>
-    <%= render 'shared/flashes' %>
+    <% unless current_page?(controller: 'fighters', action: 'index') %>
+      <%= render "layouts/footer" %>
+    <% end %>
   </body>
 </html>

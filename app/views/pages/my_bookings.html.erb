@@ -1,5 +1,7 @@
-<h1>My bookings</h1>
+<div class="container">
+  <h1>My bookings</h1>
 
-<% @bookings.each do |booking| %>
-  <%= booking.fighter.name %>
-<% end %>
+  <% @bookings.each do |booking| %>
+    <%= booking.fighter.name %>
+  <% end %>
+</div>

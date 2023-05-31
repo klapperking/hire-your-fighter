@@ -18,8 +18,11 @@
 
 .container-form {
   width: 30%;
-  border: solid 1px black;
   margin-top: 20px;
+  background-color: rgba(128, 128, 128, 0.3);
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .card-img-attr {
@@ -58,6 +61,7 @@
 
   p {
     margin-left: 10px;
+    margin-bottom: 0;
   }
 
   h4 {
@@ -69,8 +73,15 @@
   border: solid 1px gray;
   border-radius: 10px;
   margin: 10px 0 10px 0;
-  text-align: center;
+  align-items: center;
   background-color: rgba(128, 128, 128, 0.3);
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+
+  p {
+    margin: 0;
+  }
 }
 
 .card-price {
@@ -93,14 +104,6 @@
     padding: 0;
     margin: 0;
   }
-}
-
-.card-skill {
-  border: solid 1px gray;
-  border-radius: 10px;
-  margin: 10px 0 10px 0;
-  text-align: center;
-  background-color: rgba(128, 128, 128, 0.3);
 }
 
 .card-map {

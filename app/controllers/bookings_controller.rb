@@ -9,8 +9,8 @@ class BookingsController < ApplicationController
     @booking.fighter = @fighter
     @booking.user = current_user
 
-    if @booking.save!
-      redirect_to root_path
+    if @booking.save
+      redirect_to my_bookings_path
     else
       render "fighters/show", status: :unprocessable_entity
     end

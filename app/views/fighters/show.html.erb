@@ -1,42 +1,46 @@
-<div class="container">
-  <div class="container-details">
-      <div class="card-img-attr">
-        <div class="card-img" style="background-image:url('<%= cl_image_path @fighter.photo.key %>')">
-          <%= link_to edit_fighter_path(@fighter) do %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-        </div>
-        <div class="card-attr-price">
-          <div class="card-attr">
-            <p>Strength : <%= @fighter.strength %></p>
-            <div class="container-progress-bar">
-              <div class="progress-bar" style="width:<%= @fighter.strength %>%"></div>
+<div class="container-body-show">
+  <div class="container">
+    <div class="container-show">
+      <div class="container-details">
+          <div class="card-img-attr">
+            <div class="card-img" style="background-image:url('<%= cl_image_path @fighter.photo.key %>')">
+              <%= link_to edit_fighter_path(@fighter) do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
             </div>
-            <p>Defense : <%= @fighter.defense %></p>
-            <div class="container-progress-bar">
-              <div class="progress-bar" style="width:<%= @fighter.defense %>%"></div>
-            </div>
-            <% @average = (@fighter.strength + @fighter.defense) / 2  %>
-            <h4>Overall : <%= @average %></h4>
-            <div class="container-progress-bar">
-              <div class="progress-bar" style="width:<%= @average %>%"></div>
+            <div class="card-attr-price">
+              <div class="card-attr">
+                <p>Strength :</p>
+                <div class="container-progress-bar">
+                  <div class="progress-bar" style="width:<%= @fighter.strength %>%"><%= @fighter.strength %></div>
+                </div>
+                <p>Defense :</p>
+                <div class="container-progress-bar">
+                  <div class="progress-bar" style="width:<%= @fighter.defense %>%"><%= @fighter.defense %></div>
+                </div>
+                <% @average = (@fighter.strength + @fighter.defense) / 2  %>
+                <h4>Overall :</h4>
+                <div class="container-progress-bar">
+                  <div class="progress-bar" style="width:<%= @average %>%"><%= @average %></div>
+                </div>
+              </div>
+              <div class="card-price">
+                <h1><%= @fighter.price %></h1><h2> HYF</h2>
+              </div>
             </div>
           </div>
-          <div class="card-price">
-            <h1><%= @fighter.price %></h1><h2> HYF</h2>
+          <div class="card-description">
+            <p><%= @fighter.description %></p>
           </div>
-        </div>
+          <div class="card-skill">
+            <p>Master of sword</p>
+          </div>
+          <div class="card-map">
+          </div>
       </div>
-      <div class="card-description">
-        <p><%= @fighter.description %></p>
+      <div class="container-form">
       </div>
-      <div class="card-skill">
-        <p>Master of sword</p>
-      </div>
-      <div class="card-map">
-        <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </div>
-  </div>
-  <div class="container-form">
+    </div>
   </div>
 </div>
+ <%# <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

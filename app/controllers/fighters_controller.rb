@@ -28,9 +28,6 @@ class FightersController < ApplicationController
       stat_sum = session[:new_stat_sum]
     end
 
-    puts rating
-    puts stat_sum
-
     # create a new fighter instance with generated values
     @fighter = Fighter.new(rating: rating, stat_sum: stat_sum)
   end
@@ -105,5 +102,4 @@ class FightersController < ApplicationController
   def default_fighter_vars?
     session[:new_rating] == "new_creation" && session[:new_stat_sum].zero?
   end
-
 end

@@ -54,3 +54,13 @@ a {
   -webkit-text-stroke: 0.1px;
   -webkit-text-stroke-color: red;
 }
+
+.fighter-card {
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 2px;
+
+  &.my-fighters {
+    height: 400px
+  }
+}

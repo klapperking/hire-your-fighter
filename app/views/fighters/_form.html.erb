@@ -1,10 +1,10 @@
-<%= simple_form_for(model_instance) do |f| %>
-  <%= f.input :rating, as: :hidden %>
-  <%= f.input :stat_sum, as: :hidden %>
+<%= simple_form_for(fighter) do |f| %>
+  <%= f.input :rating, as: :hidden, value: fighter.rating %>
+  <%= f.input :stat_sum, as: :hidden, value: fighter.stat_sum %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :price, as: :integer, hint: "Price in cents"%>
-  <% if model_instance.new_record? %>
+  <% if fighter.new_record? %>
     <%= f.input :strength, as: :integer %>
     <%= f.input :defense, as: :integer %>
   <% end %>

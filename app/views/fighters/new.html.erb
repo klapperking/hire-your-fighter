@@ -1,4 +1,4 @@
 <h1>Create a new Fighter here!</h1>
 <h2>Your tier: <%= @fighter.rating %></h2>
 <p>Available Statpoints: <%= @fighter.stat_sum %></p>
-<%= render("form", model_instance: @fighter) %>
+<%= render("form", fighter: @fighter) %>

@@ -14,7 +14,7 @@ class Fighter < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :price, presence: true, numericality: { only_integer: true }
-  validates :rating, presence: true, inclusion: { in: TIERS.keys.map { |key| key.to_s} }
+  validates :rating, presence: true, inclusion: { in: TIERS.keys.map(&:to_s) }
 
   validates :strength, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :defense, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }

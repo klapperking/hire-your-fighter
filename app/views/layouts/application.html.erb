@@ -19,7 +19,7 @@
     <%= render 'shared/flashes' %>
     <%= render "layouts/navbar" %>
     <%= yield %>
-    <% unless current_page?(controller: 'fighters', action: 'index') %>
+    <% unless params[:controller] == "fighters" && params[:action] == "index" %>
       <%= render "layouts/footer" %>
     <% end %>
   </body>

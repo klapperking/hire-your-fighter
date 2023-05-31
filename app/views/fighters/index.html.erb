@@ -1,13 +1,15 @@
 <h1>Pick your Fighter</h1>
-<div class="container d-flex justify-content-around">
+<div class="container d-flex justify-content-around" data-controller="hover">
   <div class="hover_character">
-    <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill %>
-    <p>Strength: ?</p>
-    <p>Defense: ?</p>
+    <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill, data:{hover_target: "image"} %>
+    <p data-hover-target="strength">Strength: ?</p>
+    <p data-hover-target="defense">Defense: ?</p>
   </div>
   <div class="all_characters">
     <% @fighters.each do |fighter| %>
-      <div class="character_card">
+      <div class="character_card" data-action="mouseover->hover#updateHover"
+      data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
+      data-strength="<%= fighter.strength %>" data-defense="<%= fighter.defense %>">
         <% if fighter.photo.key %>
           <%= cl_image_tag fighter.photo.key, height: 100, width: 100, crop: :fill %>
           <%= fighter.name %>

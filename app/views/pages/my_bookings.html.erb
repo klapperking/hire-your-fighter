@@ -1,7 +1,28 @@
 <div class="container">
   <h1>My bookings</h1>
 
-  <% @bookings.each do |booking| %>
-    <%= booking.fighter.name %>
-  <% end %>
+
+<div class="container">
+<% @bookings.each do |booking| %>
+  <div class="fighter-card">
+    <% if booking.fighter.photo.key %>
+      <div class="fighter-image">
+        <%= cl_image_tag booking.fighter.photo.key, height: 200, width: 200, crop: :fill %>
+      </div>
+    <% else %>
+      <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
+    <% end %>
+    <div class="name">
+      <%= booking.fighter.name %>
+    </div>
+    <div class="stats">
+      <p>Strength: <%= booking.fighter.strength %></p>
+      <p>Defense: <%= booking.fighter.defense %></p>
+    </div>
+    <div class="remaining-days">
+      <p>Booked until: </p>
+      <%= booking.expiration_date %>
+    </div>
+  </div>
+<% end %>
 </div>

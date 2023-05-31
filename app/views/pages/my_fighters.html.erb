@@ -1,7 +1,23 @@
 <div class="container">
   <h1>My Fighters</h1>
 
+<div class="container d-flex">
   <% @fighters.each do |fighter| %>
-    <%= fighter.name %>
+    <div class="fighter-card my-fighters">
+      <% if fighter.photo.key %>
+        <div class="fighter-image">
+          <%= cl_image_tag fighter.photo.key, height: 200, width: 200, crop: :fill %>
+        </div>
+      <% else %>
+        <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
+      <% end %>
+      <div class="name">
+        <%= fighter.name %>
+      </div>
+      <div class="stats">
+        <p>Strength: <%= fighter.strength %></p>
+        <p>Defense: <%= fighter.defense %></p>
+      </div>
+    </div>
   <% end %>
 </div>

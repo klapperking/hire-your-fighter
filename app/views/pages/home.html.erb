@@ -6,7 +6,9 @@
       </div>
       <div class="card-menu">
         <ul>
-          <li>Create your Fighter</li>
+          <%= link_to new_fighter_path do %>
+            <li>Create your Fighter</li>
+          <% end %>
           <%= link_to fighters_path do %>
             <li>Pick your Fighter</li>
           <% end %>

@@ -1,3 +1,10 @@
+.container-body-index {
+  width: 100vw;
+  height: auto;
+  background-image: asset-url('background.png');
+  background-size: cover;
+}
+
 .hover_character {
   display: flex;
   flex-direction: column;

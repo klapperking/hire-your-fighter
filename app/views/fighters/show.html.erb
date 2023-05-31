@@ -3,7 +3,7 @@
     <div class="container-show">
       <div class="container-details">
           <div class="card-img-attr">
-            <div class="card-img" style="background-image:url('<%= cl_image_path @fighter.photo.key %>')">
+            <div class="card-img" style="background-image:url('<%=  @fighter.photo.key ? "#{cl_image_path @fighter.photo.key}" : "#{image_path "question_mark.png"}" %>')">
               <%= link_to edit_fighter_path(@fighter) do %>
                 <i class="fa-solid fa-pen-to-square"></i>
               <% end %>

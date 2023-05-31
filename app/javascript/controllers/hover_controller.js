@@ -9,8 +9,8 @@ export default class extends Controller {
 
   updateHover(event) {
     this.imageTarget.src = event.currentTarget.dataset.image
-    this.strengthTarget.innerText = `Strength: ${event.currentTarget.dataset.strength}`
-    this.defenseTarget.innerText = `Defense: ${event.currentTarget.dataset.defense}`
+    this.strengthTarget.innerHTML = `<strong>Strength: ${event.currentTarget.dataset.strength}</strong>`
+    this.defenseTarget.innerHTML = `<strong>Defense: ${event.currentTarget.dataset.defense}</strong>`
 
   }
 }

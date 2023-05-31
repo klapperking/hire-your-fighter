@@ -44,6 +44,16 @@
     -webkit-text-stroke-color: white;
     cursor: pointer;
   }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+#disabled {
+  color: rgba(128, 128, 128, 0.9);
+  -webkit-text-stroke: 0.1px;
+  -webkit-text-stroke-color: black;
 }
 
 a {

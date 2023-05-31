@@ -1,0 +1,6 @@
+<%= simple_form_for([fighter, booking]) do |f| %>
+  <%# <%= f.hidden_field :fighter_id, value: fighter.id %>
+  <%= f.input :starting_date %>
+  <%= f.input :expiration_date %>
+  <%= f.submit %>
+<% end %>

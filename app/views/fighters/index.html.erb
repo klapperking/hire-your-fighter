@@ -2,11 +2,18 @@
 <div class="container d-flex justify-content-around" data-controller="hover">
   <div class="hover_character">
     <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill, data:{hover_target: "image"} %>
-    <p data-hover-target="strength">Strength: ?</p>
-    <p data-hover-target="defense">Defense: ?</p>
+    <p data-hover-target="strength"> <b>Strength: ?</b></p>
+    <p data-hover-target="defense"> <b>Defense: ?</b></p>
   </div>
   <div class="all_characters">
+    <%= link_to new_fighter_path do %>
+      <div class="new_card">
+        <%= image_tag "plus.png", height: 100, width: 100, crop: :fill %>
+        <p>Create a character</p>
+      </div>
+    <% end %>
     <% @fighters.each do |fighter| %>
+    <%= link_to fighter_path(fighter) do %>
       <div class="character_card" data-action="mouseover->hover#updateHover"
       data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
       data-strength="<%= fighter.strength %>" data-defense="<%= fighter.defense %>">
@@ -18,6 +25,7 @@
           <%= fighter.name %>
         <% end %>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

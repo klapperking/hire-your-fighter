@@ -4,6 +4,9 @@
 
   p {
     text-align: center;
+    margin-top: 30px;
+    background-color: red;
+    border-radius: 5px;
   }
 }
 
@@ -12,10 +15,24 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
 
+    .new_card {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
     .character_card {
       display: flex;
       flex-direction: column;
       text-align: center;
+      align-items: center;
+    }
+    a {
+      color: black;
+      &:hover {
+        color: red;
+      }
     }
 }
 

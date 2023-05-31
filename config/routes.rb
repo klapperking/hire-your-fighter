@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   # all fighter routes
   resources :fighters do
     # only routes to create update and delete a booking
-    resources :bookings, only: %i[show]
+    resources :bookings, only: %i[show create]
   end
 
   # non-nested booking routes
-  resources :bookings, only: %i[create update destroy]
+  resources :bookings, only: %i[new create update destroy]
 
   # profile page routes
   get '/profile', to: 'pages#profile'

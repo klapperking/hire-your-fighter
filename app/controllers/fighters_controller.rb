@@ -1,11 +1,13 @@
 class FightersController < ApplicationController
   before_action :set_fighter, only: %i[show edit destroy]
+  before_action :authenticate_user!, only: %i[show]
 
   def index
     @fighters = Fighter.all
   end
 
   def show
+    @booking = Booking.new
   end
 
   # GET '/fighters/new'

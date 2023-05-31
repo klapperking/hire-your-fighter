@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # non-nested booking routes
   resources :bookings, only: %i[create update destroy]
 
-  # profile page route
+  # profile page routes
   get '/profile', to: 'pages#profile'
+  get '/profile/my_fighters', to: 'pages#my_fighters', as: :my_fighters
+  get '/profile/my_bookings', to: 'pages#my_bookings', as: :my_bookings
 end

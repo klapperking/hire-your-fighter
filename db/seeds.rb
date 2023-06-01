@@ -21,6 +21,8 @@ User.create(
   password_confirmation: "123456",
   first_name: "Florian",
   last_name: "Wasteless",
+  latitude: 40.416729,
+  longitude: -3.703339,
   credit: 1000,
   address: "Barcelona"
 )
@@ -31,7 +33,9 @@ User.create(
   password_confirmation: "123456",
   first_name: "Martin",
   last_name: "Wasteless",
-  credit: 1000,
+  latitude: 41.390205,
+  longitude: 2.154007,
+  credit: 1000
   address: "Madrid"
 )
 

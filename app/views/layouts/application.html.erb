@@ -17,9 +17,11 @@
 
   <body style="position: relative;min-height:100vh">
     <%= render 'shared/flashes' %>
-    <%= render "layouts/navbar" %>
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+      <%= render "layouts/navbar" %>
+    <% end %>
     <%= yield %>
-    <% unless params[:controller] == "fighters" && params[:action] == "index" %>
+    <% unless params[:controller] == "fighters" && params[:action] == "index" || params[:controller] == "pages" && params[:action] == "home" %>
       <%= render "layouts/footer" %>
     <% end %>
   </body>

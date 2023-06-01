@@ -1,6 +1,6 @@
 class FightersController < ApplicationController
-  before_action :set_fighter, only: %i[show edit destroy]
-  before_action :authenticate_user!, only: %i[show]
+  before_action :set_fighter, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index]
 
   def index
     @fighters = Fighter.all
@@ -15,6 +15,12 @@ class FightersController < ApplicationController
 
   # GET '/fighters/new'
   def new
+    # if user has max_fighters (5) already its not possible to create a new fighter
+    if current_user.fighters.count == 5
+      flash[:notice] = 'You can not create more fighters'
+      redirect_to(fighters_path)
+    end
+
     # if session vars and are default, we roll; else take existing
     if new_session? || default_fighter_vars?
       # roll rating
@@ -43,7 +49,8 @@ class FightersController < ApplicationController
     # if generated form values were changed re-render page
     if new_fighter.rating != session[:new_rating] || new_fighter.stat_sum.to_i != session[:new_stat_sum]
       @fighter = new_fighter
-      render :new, status: :unprocessable_entity # TODO: Proper Error message - possibly a flash?
+      flash[:notice] = "You changed your allocated stats (Bad person!)"
+      render :new, status: :unprocessable_entity
     end
 
     # if save successful, reset session values for #new; else keep them (prevent re-rolling)
@@ -62,21 +69,20 @@ class FightersController < ApplicationController
   # GET '/fighters/:id/edit'
   def edit
     # store fighter rating and stat sum in session
-    session[:edit_rating] = rating
-    session[:edit_stat_sum] = stat_sum
+    session[:edit_rating] = @fighter.rating
+    session[:edit_stat_sum] = @fighter.stat_sum
   end
 
   # PATCH/PUT '/fighters/:id/'
   def update
-    fighter_to_edit = Fighter.new(fighter_params)
-    fighter_to_edit.user = current_user
+    # remove injected extra-params if they are there
+    fighter_params.to_hash.except!(%i[price strength defense photo rating stat_sum])
 
-    if fighter_to_edit.rating != session[:edit_rating] || fighter_to_edit.stat_sum != session[:edit_stat_sum]
-      render :edit, status: :unprocessable_entity # TODO: Proper Error message - possibly a flash?
-    end
+    # add user
+    fighter_params[:user] = current_user
 
-    if fighter_to_edit.update
-      redirect_to(fighter_path(fighter_to_edit))
+    if @fighter.update(fighter_params)
+      redirect_to(fighter_path(@fighter))
     else
       render :edit, status: :unprocessable_entity
     end

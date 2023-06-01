@@ -22,6 +22,14 @@ class Fighter < ApplicationRecord
   validates :stat_sum, presence: true, numericality: { only_integer: true }
   validate :validate_stat_sum # additional validation for sum of all stats equaling the rolled number
 
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_description_and_rating,
+    against: [ :name, :description, :rating ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   private
 
   def validate_stat_sum

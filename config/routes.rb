@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
   get '/profile/my_fighters', to: 'pages#my_fighters', as: :my_fighters
   get '/profile/my_bookings', to: 'pages#my_bookings', as: :my_bookings
+  get '/profile/dashboard', to: 'pages#dashboard', as: :dashboard
 end

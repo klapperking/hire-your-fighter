@@ -15,6 +15,9 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validate :number_of_fighters
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   private
 
   def number_of_fighters

@@ -35,7 +35,7 @@ User.create(
   last_name: "Wasteless",
   latitude: 41.390205,
   longitude: 2.154007,
-  credit: 1000
+  credit: 1000,
   address: "Madrid"
 )
 

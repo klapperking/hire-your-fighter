@@ -21,7 +21,8 @@ User.create(
   password_confirmation: "123456",
   first_name: "Florian",
   last_name: "Wasteless",
-  credit: 1000
+  credit: 1000,
+  address: "Barcelona"
 )
 
 User.create(
@@ -30,7 +31,8 @@ User.create(
   password_confirmation: "123456",
   first_name: "Martin",
   last_name: "Wasteless",
-  credit: 1000
+  credit: 1000,
+  address: "Madrid"
 )
 
 puts "Created #{User.count} users"

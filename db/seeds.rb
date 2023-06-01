@@ -41,9 +41,10 @@ zelda = Fighter.new(
   description: "Princess of Hyrule, her magic powers can banish the evil from the surface.",
   price: 50,
   rating: "Legendary",
-  strength: 60,
-  defense: 39,
-  stat_sum: 99,
+  max_stat: 99,
+  strength: 77,
+  defense: 80,
+  speed: 92,
   user: User.all.sample
 )
 
@@ -57,9 +58,10 @@ mario = Fighter.new(
   description: "High jumper and Gumba Smasher",
   price: 20,
   rating: "Epic",
-  strength: 50,
-  defense: 20,
-  stat_sum: 70,
+  max_stat: 70,
+  strength: 56,
+  defense: 63,
+  speed: 60,
   user: User.all.sample
 )
 
@@ -73,9 +75,10 @@ frodo = Fighter.new(
   description: "Ringbearer and Hero - also: Small feet",
   price: 40,
   rating: "Legendary",
-  strength: 30,
-  defense: 52,
-  stat_sum: 82,
+  max_stat: 85,
+  strength: 77,
+  defense: 80,
+  speed: 85,
   user: User.all.sample
 )
 
@@ -89,9 +92,10 @@ pato = Fighter.new(
   description: "The best batch manager. Is a duck, so can't fly or fight well",
   price: 34,
   rating: "Standard",
-  strength: 14,
-  defense: 15,
-  stat_sum: 29,
+  max_stat: 23,
+  strength: 20,
+  defense: 12,
+  speed: 10,
   user: User.all.sample
 )
 
@@ -105,9 +109,10 @@ simon = Fighter.new(
   description: "Creator and Destroyer of the Universe",
   price: 80,
   rating: "Legendary",
-  strength: 62,
-  defense: 37,
-  stat_sum: 99,
+  max_stat: 99,
+  strength: 99,
+  defense: 99,
+  speed: 99,
   user: User.all.sample
 )
 

@@ -14,22 +14,28 @@ class FightersController < ApplicationController
   def new
     # if session vars and are default, we roll; else take existing
     if new_session? || default_fighter_vars?
-      # roll rating
-      rating = Fighter::TIERS.keys[rand(4)]
-      stat_sum = rand(Fighter::TIERS[rating][0]..Fighter::TIERS[rating][1])
+      rating = Fighter::TIERS.keys[rand(4)] # roll tier
+      max_stat = rand(Fighter::TIERS[rating][0]...Fighter::TIERS[rating][1]) # roll stat number within tier
+
+      fighter_stats = {
+        rating: rating,
+        max_stat: max_stat,
+        # roll individual stats
+        strength: rand(Fighter::TIERS[rating][0]...max_stat),
+        defense: rand(Fighter::TIERS[rating][0]...max_stat),
+        speed: rand(Fighter::TIERS[rating][0]...max_stat)
+      }
 
       # update session values
-      session[:new_rating] = rating
-      session[:new_stat_sum] = stat_sum
+      session[:fighter_stats] = fighter_stats
 
     # if session values exist and are non-default
     else
-      rating = session[:new_rating]
-      stat_sum = session[:new_stat_sum]
+      fighter_stats = session[:fighter_stats]
     end
 
     # create a new fighter instance with generated values
-    @fighter = Fighter.new(rating: rating, stat_sum: stat_sum)
+    @fighter = Fighter.new(fighter_stats)
   end
 
   # POST '/fighters/'
@@ -38,15 +44,16 @@ class FightersController < ApplicationController
     new_fighter.user = current_user # current_user method from devise to access logged-in user
 
     # if generated form values were changed re-render page
-    if new_fighter.rating != session[:new_rating] || new_fighter.stat_sum.to_i != session[:new_stat_sum]
-      @fighter = new_fighter
-      render :new, status: :unprocessable_entity # TODO: Proper Error message - possibly a flash?
+    session.each do |stat_key, stat_val|
+      if stat_val != new_fighter[stat_key]
+        @fighter = new_fighter
+        render :new, status: :unprocessable_entity # TODO: Proper Error message - possibly a flash?
+      end
     end
 
     # if save successful, reset session values for #new; else keep them (prevent re-rolling)
     if new_fighter.save
-      session[:new_rating] = "new_creation"
-      session[:new_stat_sum] = 0
+      session[:fighter_params] = {}
       # redirect to '/fighters'
       redirect_to(fighters_path)
     else
@@ -96,10 +103,10 @@ class FightersController < ApplicationController
   end
 
   def new_session?
-    !(session.key?(:new_rating) && session.key?(:new_stat_sum))
+    !session.key?(:fighter_stats)
   end
 
   def default_fighter_vars?
-    session[:new_rating] == "new_creation" && session[:new_stat_sum].zero?
+    session[:fighter_stats] == {}
   end
 end

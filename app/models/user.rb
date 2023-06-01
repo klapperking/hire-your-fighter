@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :credit, numericality: { only_integer: true }
   validates :last_name, presence: true
+  validates :address, presence: true
   validate :number_of_fighters
 
   geocoded_by :address

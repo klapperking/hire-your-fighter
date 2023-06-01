@@ -40,9 +40,16 @@
           </div>
       </div>
       <div class="container-form">
-        <%= render("bookings/form_booking", booking: @booking, fighter: @fighter ) %>
+        <% if @fighter.user == current_user %>
+          <h2>Update your character</h2>
+          <%= render("form", fighter: @fighter) %>
+          <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% else %>
+          <%= render("bookings/form_booking", booking: @booking, fighter: @fighter ) %>
+        <% end %>
+        <br>
+        <%= link_to "Back to all characters", fighters_path %>
       </div>
     </div>
   </div>
 </div>
- <%# <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

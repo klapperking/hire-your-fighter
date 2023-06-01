@@ -121,3 +121,6 @@ puts "Created Simon"
 
 puts "Created #{Fighter.count} fighters"
 puts "Done seeding"
+
+
+# TODO : Add Goku

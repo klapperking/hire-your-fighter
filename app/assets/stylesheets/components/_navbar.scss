@@ -18,13 +18,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 300px;
+  width: auto;
   justify-content: space-between;
 }
 
 .btn-container a {
   text-decoration: none;
-  color: white;
 
   &:hover {
     color: gray;
@@ -37,4 +36,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.dropdown-item {
+  color: black;
 }

@@ -5,9 +5,25 @@
   background-size: cover;
 }
 
+.select-screen-container {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.yugioh-card {
+  background-image: asset-url('card-standard.jpg');
+  width: 469px;
+  height: 682px;
+}
+
+
 .hover_character {
+  width: 40vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   p {
     text-align: center;
@@ -17,30 +33,43 @@
   }
 }
 
+.character_select {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+
+}
+
+
 .all_characters {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
 
-    .new_card {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
+
+  .character_card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+
+    &.new {
+      color: black;
     }
 
-    .character_card {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
-    }
-    a {
+    &.existing {
       color: black;
-      &:hover {
-        color: red;
-      }
     }
+
+  }
+
+  a {
+    color: black;
+    &:hover {
+      color: red;
+    }
+  }
 }
 
 h1 {

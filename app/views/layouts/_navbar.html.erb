@@ -8,7 +8,11 @@
     <h2>Hire Your Fighter!</h2>
   </div>
   <div class="btn-container">
+    <ul class="credit-avatar">
       <% if user_signed_in? %>
+      <li class="nav-item">
+            <p>Credit: <%= current_user.credit %></p>
+      </li>
       <li class="nav-item dropdown">
         <%= image_tag "avatar_test.png", class:"avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

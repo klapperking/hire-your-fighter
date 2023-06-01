@@ -29,8 +29,11 @@
         <% @fighters.each do |fighter| %>
         <%= link_to fighter_path(fighter) do %>
           <div class="character_card" data-action="mouseover->hover#updateHover"
-          data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
-          data-strength="<%= fighter.strength %>" data-defense="<%= fighter.defense %>">
+              data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
+              data-strength="<%= fighter.strength %>"
+              data-defense="<%= fighter.defense %>"
+              data-speed="<%= fighter.speed %>"
+              >
             <% if fighter.photo.key %>
               <%= cl_image_tag fighter.photo.key, height: 100, width: 100, crop: :fill %>
               <%= fighter.name %>

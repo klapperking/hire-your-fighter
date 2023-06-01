@@ -1,6 +1,6 @@
 class FightersController < ApplicationController
   before_action :set_fighter, only: %i[show edit destroy]
-  before_action :authenticate_user!, only: %i[show]
+  before_action :authenticate_user!, except: %i[index]
 
   def index
     @fighters = Fighter.all
@@ -26,8 +26,12 @@ class FightersController < ApplicationController
         # roll individual stats
         strength: rand(Fighter::TIERS[rating][0]...max_stat),
         defense: rand(Fighter::TIERS[rating][0]...max_stat),
-        speed: rand(Fighter::TIERS[rating][0]...max_stat)
+        speed: rand(Fighter::TIERS[rating][0]...max_stat),
       }
+
+      # calculate fighter price
+      stat_sum = fighter_stats[:strength] + fighter_stats[:strength] + fighter_stats[:strength]
+      fighter_stats[:price] = stat_sum * 3
 
       # update session values
       session[:fighter_stats] = fighter_stats
@@ -47,10 +51,13 @@ class FightersController < ApplicationController
     new_fighter.user = current_user # current_user method from devise to access logged-in user
 
     # if generated form values were changed re-render page
-    session.each do |stat_key, stat_val|
+    session[:fighter_stats].each do |stat_key, stat_val|
+      puts stat_val
+      puts new_fighter[stat_key]
       if stat_val != new_fighter[stat_key]
         @fighter = new_fighter
         render :new, status: :unprocessable_entity # TODO: Proper Error message - possibly a flash?
+        return
       end
     end
 
@@ -98,7 +105,7 @@ class FightersController < ApplicationController
   private
 
   def fighter_params
-    params.require(:fighter).permit(%i[name description price strength defense photo rating stat_sum])
+    params.require(:fighter).permit(%i[name description photo rating price max_stat strength defense speed])
   end
 
   def set_fighter

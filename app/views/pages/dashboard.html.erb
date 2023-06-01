@@ -3,15 +3,22 @@
     <div id="dashboard-banner">
       <h2>My Dashboard</h2>
     </div>
+    <span>Find an other user !</span>
     <div class="map-container" data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
     <div class= my-container>
-      <div class="my-card">
-      </div>
-      <div class="my-card">
-      </div>
+      <%= link_to my_bookings_path, class:"my-card" do %>
+        <div>
+          <p>Bookings</p>
+        </div>
+      <% end %>
+      <%= link_to my_fighters_path, class:"my-card" do %>
+        <div>
+          <p>Fighters</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

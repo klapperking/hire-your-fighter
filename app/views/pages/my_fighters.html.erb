@@ -1,22 +1,29 @@
-<h1>My Fighters</h1>
+<div class="container-body-fighter">
+  <h1>My Fighters</h1>
 
-<div class="container d-flex">
-  <% @fighters.each do |fighter| %>
-    <div class="fighter-card my-fighters">
-      <% if fighter.photo.key %>
-          <div class="fighter-image">
-            <%= cl_image_tag fighter.photo.key, height: 200, width: 200, crop: :fill %>
+  <div class="container">
+    <div class="container-card-fighter">
+      <% @fighters.each do |fighter| %>
+        <div class="fighter-card">
+          <% if fighter.photo.key %>
+              <div class="fighter-image">
+                <%= cl_image_tag fighter.photo.key, height: 200, width: 200, crop: :fill %>
+              </div>
+            <% else %>
+              <div class="fighter-image">
+                <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
+              </div>
+            <% end %>
+          <div class="name">
+            <%= fighter.name %>
           </div>
-        <% else %>
-          <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
-        <% end %>
-      <div class="name">
-        <%= fighter.name %>
-      </div>
-      <div class="stats">
-        <p>Strength: <%= fighter.strength %></p>
-        <p>Defense: <%= fighter.defense %></p>
-      </div>
+          <div class="stats">
+            <p>Strength: <%= fighter.strength %></p>
+            <p>Defense: <%= fighter.defense %></p>
+            <p>Speed: <%= fighter.speed %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

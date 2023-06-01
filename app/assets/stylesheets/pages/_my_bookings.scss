@@ -1,0 +1,33 @@
+.container-body-booking {
+  width: 100vw;
+  height: auto;
+  background-image: asset-url('background.png');
+  background-size: cover;
+  padding-bottom: 20px;
+}
+
+#empty-space {
+  height: 100vh;
+}
+
+.fighter-card {
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 75vh;
+  background-color: rgba(128, 128, 128, 0.3);
+  padding: 10px;
+}
+
+.container-card-fighter {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.fighter-image {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

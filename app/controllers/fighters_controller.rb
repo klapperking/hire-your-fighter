@@ -1,6 +1,6 @@
 class FightersController < ApplicationController
   before_action :set_fighter, only: %i[show edit destroy]
-  before_action :authenticate_user!, only: %i[show]
+  before_action :authenticate_user!, only: %i[show new edit]
 
   def index
     @fighters = Fighter.all
@@ -12,6 +12,12 @@ class FightersController < ApplicationController
 
   # GET '/fighters/new'
   def new
+    # if user has max_fighters (5) already its not possible to create a new fighter
+    if current_user.fighters.count == 5
+      flash[:notice] = 'You can not create more fighters'
+      redirect_to(fighters_path)
+    end
+
     # if session vars and are default, we roll; else take existing
     if new_session? || default_fighter_vars?
       # roll rating
@@ -59,8 +65,8 @@ class FightersController < ApplicationController
   # GET '/fighters/:id/edit'
   def edit
     # store fighter rating and stat sum in session
-    session[:edit_rating] = rating
-    session[:edit_stat_sum] = stat_sum
+    session[:edit_rating] = @fighter.rating
+    session[:edit_stat_sum] = @fighter.stat_sum
   end
 
   # PATCH/PUT '/fighters/:id/'

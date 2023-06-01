@@ -1,11 +1,25 @@
 .container-body-dashboard {
-  width: 100%;
+  width: 100vw;
   height: auto;
   background-image: asset-url('background.png');
   background-size: cover;
 }
 
 .map-container {
-  width: 80%;
-  height: 600px;
+  width: 100%;
+  height: 400px;
+}
+
+#dashboard-banner {
+  margin: 20px;
+  text-align: center;
+}
+
+.my-container {
+  display: flex;
+}
+
+.my-card {
+  width: 45%;
+  background-color: gray;
 }

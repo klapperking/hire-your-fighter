@@ -1,12 +1,17 @@
 <div class="container-body-dashboard">
   <div class="container">
+    <div id="dashboard-banner">
+      <h2>My Dashboard</h2>
+    </div>
     <div class="map-container" data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class="my-fighter-container">
-    </div>
-    <div class="my-booking-container">
+    <div class= my-container>
+      <div class="my-card">
+      </div>
+      <div class="my-card">
+      </div>
     </div>
   </div>
 </div>

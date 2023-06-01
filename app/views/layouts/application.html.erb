@@ -23,7 +23,7 @@
       <%= render "layouts/navbar" %>
     <% end %>
     <%= yield %>
-    <% unless params[:controller] == "fighters" && params[:action] == "index" || params[:controller] == "pages" && params[:action] == "home" %>
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
       <%= render "layouts/footer" %>
     <% end %>
   </body>

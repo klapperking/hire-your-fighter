@@ -1,26 +1,39 @@
-<h1>My bookings</h1>
-
-<div class="container">
-  <% @bookings.each do |booking| %>
-    <div class="fighter-card">
-      <% if booking.fighter.photo.key %>
-        <div class="fighter-image">
-          <%= cl_image_tag booking.fighter.photo.key, height: 200, width: 200, crop: :fill %>
+<div class="container-body-booking">
+  <h1>My bookings</h1>
+  <div class="container">
+    <% if @bookings.any? %>
+    <div class="container-card-fighter">
+      <% @bookings.each do |booking| %>
+        <div class="fighter-card">
+          <% if booking.fighter.photo.key %>
+            <div class="fighter-image">
+              <%= cl_image_tag booking.fighter.photo.key, crop: :fill %>
+            </div>
+          <% else %>
+            <div class="fighter-image">
+            <%= image_tag "question_mark.png", crop: :fill %>
+            </div>
+          <% end %>
+          <div class="name">
+            <%= booking.fighter.name %>
+          </div>
+          <div class="stats">
+            <p>Strength: <%= booking.fighter.strength %></p>
+            <p>Defense: <%= booking.fighter.defense %></p>
+            <p>Speed: <%= booking.fighter.speed %></p>
+          </div>
+          <div class="remaining-days">
+            <p>Booked from: </p>
+            <%= booking.starting_date %>
+            <p>Booked until: </p>
+            <%= booking.expiration_date %>
+          </div>
         </div>
-      <% else %>
-        <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
       <% end %>
-      <div class="name">
-        <%= booking.fighter.name %>
-      </div>
-      <div class="stats">
-        <p>Strength: <%= booking.fighter.strength %></p>
-        <p>Defense: <%= booking.fighter.defense %></p>
-      </div>
-      <div class="remaining-days">
-        <p>Booked until: </p>
-        <%= booking.expiration_date %>
-      </div>
     </div>
-  <% end %>
+    <% else %>
+      <div id="empty-space">
+      </div>
+    <% end %>
+  </div>
 </div>

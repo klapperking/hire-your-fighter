@@ -10,4 +10,17 @@ class PagesController < ApplicationController
   def my_bookings
     @bookings = Booking.where('user_id = ?', current_user.id.to_s)
   end
+
+  def dashboard
+    @fighters = Fighter.where('user_id = ?', current_user.id.to_s)
+    @bookings = Booking.where('user_id = ?', current_user.id.to_s)
+    @users = User.all
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
+  end
 end

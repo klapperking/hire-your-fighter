@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import HoverController from "./hover_controller"
 application.register("hover", HoverController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)

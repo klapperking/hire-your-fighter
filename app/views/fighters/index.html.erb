@@ -2,14 +2,15 @@
   <h1>Pick your Fighter</h1>
   <div class="select-screen-container" data-controller="hover">
     <div class="hover_character">
-      <div class="yugioh-card">
+      <div class="yugioh-card" data-hover-target="card">
+        <p data-hover-target="name" class="fighter name"><b>Unknown Fighter</b></p>
         <div class="fighter-image">
-          <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill, data:{hover_target: "image"} %>
+          <%= image_tag "question_mark.png", data: {hover_target: "image"} %>
         </div>
         <div class="fighter-stats">
-          <p data-hover-target="strength"> <b>Strength: ?</b></p>
-          <p data-hover-target="defense"> <b>Defense: ?</b></p>
-          <p data-hover-target="speed"> <b>Speed: ?</b></p>
+          <p data-hover-target="strength" class="fighter strength"> <b>Strength: ?</b></p>
+          <p data-hover-target="defense" class="fighter defense"> <b>Defense: ?</b></p>
+          <p data-hover-target="speed" class="fighter speed"> <b>Speed: ?</b></p>
         </div>
       </div>
     </div>
@@ -41,9 +42,11 @@
         <%= link_to fighter_path(fighter) do %>
           <div class="character-card existing" data-action="mouseover->hover#updateHover"
               data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
+              data-name="<%= fighter.name%>"
               data-strength="<%= fighter.strength %>"
               data-defense="<%= fighter.defense %>"
               data-speed="<%= fighter.speed %>"
+              data-asseturl="<%= asset_url("card-#{fighter.rating.downcase}.png")%>"
               >
             <% if fighter.photo.key %>
               <%= cl_image_tag fighter.photo.key, height: 100, width: 100, crop: :fill %>

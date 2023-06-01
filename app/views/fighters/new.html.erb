@@ -1,6 +1,5 @@
 <div class="container">
     <h1>Create a new Fighter here!</h1>
-    <h2>Your tier: <%= @fighter.rating %></h2>
-    <p>Available Statpoints: <%= @fighter.stat_sum %></p>
+    <h3>Your New Fighter will be of Tier: <%= @fighter.rating %></h3>
     <%= render("form", fighter: @fighter) %>
 </div>

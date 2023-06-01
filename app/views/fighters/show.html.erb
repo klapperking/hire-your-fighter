@@ -18,6 +18,10 @@
                 <div class="container-progress-bar">
                   <div class="progress-bar" style="width:<%= @fighter.defense %>%"><%= @fighter.defense %></div>
                 </div>
+                <p>Speed :</p>
+                <div class="container-progress-bar">
+                  <div class="progress-bar" style="width:<%= @fighter.speed %>%"><%= @fighter.speed %></div>
+                </div>
                 <% @average = (@fighter.strength + @fighter.defense) / 2  %>
                 <h4>Overall :</h4>
                 <div class="container-progress-bar">

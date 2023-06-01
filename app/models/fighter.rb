@@ -23,6 +23,14 @@ class Fighter < ApplicationRecord
   validates :max_stat, presence: true, numericality: { only_integer: true }
   validate :validate_max_stat # additional validation for sum of all stats equaling the rolled number
 
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_description_and_rating,
+    against: [ :name, :description, :rating ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   private
 
   def validate_max_stat

@@ -4,6 +4,9 @@ class FightersController < ApplicationController
 
   def index
     @fighters = Fighter.all
+    if params[:query].present?
+      @fighters = Fighter.search_by_name_description_and_rating(params[:query])
+    end
   end
 
   def show

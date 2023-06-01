@@ -23,7 +23,8 @@ User.create(
   last_name: "Wasteless",
   latitude: 40.416729,
   longitude: -3.703339,
-  credit: 1000
+  credit: 1000,
+  address: "Barcelona"
 )
 
 User.create(
@@ -35,6 +36,7 @@ User.create(
   latitude: 41.390205,
   longitude: 2.154007,
   credit: 1000
+  address: "Madrid"
 )
 
 puts "Created #{User.count} users"

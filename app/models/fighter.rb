@@ -11,6 +11,7 @@ class Fighter < ApplicationRecord
     Legendary: [75, 99]
   }
 
+
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :price, presence: true, numericality: { only_integer: true }
@@ -19,8 +20,8 @@ class Fighter < ApplicationRecord
   validates :strength, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :defense, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
-  validates :stat_sum, presence: true, numericality: { only_integer: true }
-  validate :validate_stat_sum # additional validation for sum of all stats equaling the rolled number
+  validates :max_stat, presence: true, numericality: { only_integer: true }
+  validate :validate_max_stat # additional validation for sum of all stats equaling the rolled number
 
   include PgSearch::Model
 
@@ -32,7 +33,10 @@ class Fighter < ApplicationRecord
 
   private
 
-  def validate_stat_sum
-    errors.add(:stat_sum, "You are allocating too many stat points") unless stat_sum >= strength + defense
+  def validate_max_stat
+    stats = [strength, defense, speed]
+    stats.each do |stat|
+      errors.add(:max_stat, "You are allocating too many stat points") if stat > max_stat
+    end
   end
 end

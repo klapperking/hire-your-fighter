@@ -1,12 +1,13 @@
 <%= simple_form_for(fighter) do |f| %>
   <%= f.input :rating, as: :hidden, value: fighter.rating %>
-  <%= f.input :stat_sum, as: :hidden, value: fighter.stat_sum %>
+  <%= f.input :max_stat, as: :hidden, value: fighter.max_stat %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :price, as: :integer, hint: "Price in cents"%>
+  <%= f.input :price, as: :integer, value: fighter.price, input_html: { readonly: true } %>
   <% if fighter.new_record? %>
-    <%= f.input :strength, as: :integer %>
-    <%= f.input :defense, as: :integer %>
+    <%= f.input :strength, as: :integer, value: fighter.strength, input_html: { readonly: true} %>
+    <%= f.input :defense, as: :integer, value: fighter.defense, input_html: { readonly: true} %>
+    <%= f.input :speed, as: :integer, value: fighter.speed, input_html: { readonly: true} %>
   <% end %>
   <%= f.input :photo, as: :file %>
   <%= f.submit %>

@@ -66,7 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_123345) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "stat_sum"
+    t.integer "max_stat"
+    t.integer "speed"
     t.index ["user_id"], name: "index_fighters_on_user_id"
   end
 

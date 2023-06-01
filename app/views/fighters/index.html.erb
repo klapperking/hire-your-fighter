@@ -1,34 +1,45 @@
 <div class="container-body-index">
   <h1>Pick your Fighter</h1>
-  <div class="container d-flex justify-content-around" data-controller="hover">
+  <div class="select-screen-container" data-controller="hover">
     <div class="hover_character">
-      <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill, data:{hover_target: "image"} %>
-      <p data-hover-target="strength"> <b>Strength: ?</b></p>
-      <p data-hover-target="defense"> <b>Defense: ?</b></p>
+      <div class="yugioh-card">
+        <div class="fighter-image">
+          <%= image_tag "question_mark.png", height: 400, width: 400, crop: :fill, data:{hover_target: "image"} %>
+        </div>
+        <div class="fighter-stats">
+          <p data-hover-target="strength"> <b>Strength: ?</b></p>
+          <p data-hover-target="defense"> <b>Defense: ?</b></p>
+          <p data-hover-target="speed"> <b>Speed: ?</b></p>
+        </div>
+      </div>
     </div>
-    <div class="characters_search">
-      <div class="row justify-content-center">
-        <div class="col-sm-8 my-3">
-          <%= form_with url: fighters_path, method: :get, class: "d-flex" do %>
-            <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Type a keyword"
-              %>
-            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-          <% end %>
+    <div class="character-select">
+      <div class="search-bar">
+        <div class="row justify-content-center">
+          <div class="col-sm-8 my-3">
+            <%= form_with url: fighters_path, method: :get, class: "d-flex" do %>
+              <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Type a keyword"
+                %>
+              <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="all_characters">
+        <!-- New figther as top-left icon -->
         <%= link_to new_fighter_path do %>
-          <div class="new_card">
+          <div class="character-card new">
             <%= image_tag "plus.png", height: 100, width: 100, crop: :fill %>
             <p>Create a character</p>
           </div>
         <% end %>
+        <!-- Card Item for each fighter -->
         <% @fighters.each do |fighter| %>
         <%= link_to fighter_path(fighter) do %>
-          <div class="character_card" data-action="mouseover->hover#updateHover"
+          <div class="character-card existing" data-action="mouseover->hover#updateHover"
               data-image="<%=  fighter.photo.key ? "#{cl_image_path fighter.photo.key}" : "#{image_path "question_mark.png"}" %>"
               data-strength="<%= fighter.strength %>"
               data-defense="<%= fighter.defense %>"
@@ -44,7 +55,6 @@
           </div>
           <% end %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

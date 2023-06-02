@@ -43,7 +43,7 @@ puts "Created #{User.count} users"
 puts "Creating fighters..."
 
 zelda = Fighter.new(
-  name: "Zelda",
+  name: "Princess Zelda",
   description: "Princess of Hyrule, her magic powers can banish the evil from the surface.",
   price: 50,
   rating: "Legendary",
@@ -94,7 +94,7 @@ frodo.save!
 puts "Created Frodo"
 
 pato = Fighter.new(
-  name: "Pato The Duck",
+  name: "Zenmaster Pato",
   description: "The best batch manager. Is a duck, so can't fly or fight well",
   price: 34,
   rating: "Standard",
@@ -111,7 +111,7 @@ pato.save!
 puts "Created Pato"
 
 simon = Fighter.new(
-  name: "Simon, Destroyer of the Universe",
+  name: "Simon - The Omnipotent",
   description: "Creator and Destroyer of the Universe",
   price: 80,
   rating: "Legendary",

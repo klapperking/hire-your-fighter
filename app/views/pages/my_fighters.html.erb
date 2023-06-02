@@ -55,23 +55,26 @@
       <h1>My Fighters</h1>
       <div class="container-card-fighter">
         <% @fighters.each do |fighter| %>
-          <div class="fighter-card">
+          <div class="yugioh-card">
+          <p class="fighter name"><%= fighter.name %></p>
             <% if fighter.photo.key %>
-                <div class="fighter-img">
+                <div class="fighter-image">
                   <%= cl_image_tag fighter.photo.key, height: 200, width: 200, crop: :fill %>
                 </div>
               <% else %>
-                <div class="fighter-img">
+                <div class="fighter-image">
                   <%= image_tag "question_mark.png", height: 200, width: 200, crop: :fill %>
                 </div>
               <% end %>
-            <div class="name">
-              <%= fighter.name %>
-            </div>
+          <div class="fighter-info">
+          <div class="description">
+            <p><%= fighter.description %></p>
+          </div>
             <div class="stats">
-              <p>Strength: <%= fighter.strength %></p>
-              <p>Defense: <%= fighter.defense %></p>
-              <p>Speed: <%= fighter.speed %></p>
+              <p><i class="fa-solid fa-hand-fist" style="color: #000000;"></i> <%= fighter.strength %></p>
+              <p><i class="fa-solid fa-shield" style="color: #000000;"></i> <%= fighter.defense %></p>
+              <p><i class="fa-solid fa-person-running" style="color: #000000;"></i> <%= fighter.speed %></p>
+            </div>
             </div>
           </div>
         <% end %>

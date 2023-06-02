@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = params[:status]
     if @booking.save
-      redirect_to my_bookings_path
+      redirect_to my_fighters_path
     else
       render "pages/my_fighters", status: :unprocessable_entity
     end

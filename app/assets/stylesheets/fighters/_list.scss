@@ -16,6 +16,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 15px;
+  margin-top: 20px;
 
 }
 
@@ -116,6 +117,9 @@ h1 {
 
     &:hover {
       border: 3px solid red;
+      .fa-solid.fa-circle-plus {
+        color: red;
+      }
     }
 
     .new {
@@ -129,4 +133,26 @@ h1 {
 
 .search-button {
   background-color: grey;
+
+  &.create-button {
+    display: block;
+    background-color: black;
+    color: white;
+    margin: 10px auto;
+    padding: 5px;
+    border: 2px solid black;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.fa-solid.fa-circle-plus {
+  font-size: 80px;
+  color: #000000;
+}
+
+.new-container {
+  width: 60%
 }

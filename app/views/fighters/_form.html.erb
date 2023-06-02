@@ -10,5 +10,5 @@
     <%= f.input :speed, as: :integer, value: fighter.speed, input_html: { readonly: true} %>
   <% end %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <%= f.submit "Create character", class: "search-button create-button" %>
 <% end %>

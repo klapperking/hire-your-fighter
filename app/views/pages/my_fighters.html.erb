@@ -55,7 +55,7 @@
       <h1>My Fighters</h1>
       <div class="container-card-fighter">
         <% @fighters.each do |fighter| %>
-          <div class="yugioh-card">
+          <div class="yugioh-card-tier" style="background-image: url(<%= asset_url("card-#{fighter.rating.downcase}.png") %>)">
           <p class="fighter name"><%= fighter.name %></p>
             <% if fighter.photo.key %>
                 <div class="fighter-image">

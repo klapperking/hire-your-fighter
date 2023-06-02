@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="hover"
 export default class extends Controller {
-  static targets = ["card", "image", "name", "strength", "defense", "speed"]
+  static targets = ["card", "image", "name", "strength", "defense", "speed", "description"]
 
   connect() {
   }
@@ -14,9 +14,10 @@ export default class extends Controller {
     this.cardTarget.style.backgroundImage = `url(${event.currentTarget.dataset.asseturl})`
 
     // update fighter stats with the hovered stats
-    this.nameTarget.innerHTML = `<strong>${event.currentTarget.dataset.name}</strong>`
-    this.strengthTarget.innerHTML = `<strong>Strength: ${event.currentTarget.dataset.strength}</strong>`
-    this.defenseTarget.innerHTML = `<strong>Defense: ${event.currentTarget.dataset.defense}</strong>`
-    this.speedTarget.innerHTML = `<strong>Speed: ${event.currentTarget.dataset.speed}</strong>`
+    this.nameTarget.innerHTML = `${event.currentTarget.dataset.name}`
+    this.descriptionTarget.innerHTML = ` ${event.currentTarget.dataset.description}`
+    this.strengthTarget.innerHTML = `<i class="fa-solid fa-hand-fist" style="color: #000000;"></i> ${event.currentTarget.dataset.strength}`
+    this.defenseTarget.innerHTML = `<i class="fa-solid fa-shield" style="color: #000000;"></i> ${event.currentTarget.dataset.defense}`
+    this.speedTarget.innerHTML = `<i class="fa-solid fa-person-running" style="color: #000000;"></i> ${event.currentTarget.dataset.speed}`
   }
 }

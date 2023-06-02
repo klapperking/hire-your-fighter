@@ -5,6 +5,13 @@
   background-size: cover;
 }
 
+h1 {
+  text-align: center;
+  padding: 30px;
+  font-family: 'Rubik';
+  font-weight: bold;
+}
+
 .select-screen-container {
   display: flex;
   justify-content: space-around;
@@ -29,7 +36,7 @@
   // Width, Height, Left, Top - Values chosen based on 400x650 Card Templates
   position: absolute;
   width: 338px;
-  height: 308px;
+  height: 309px;
   left: 53px;
   top: 108px;
   border: 3px solid black;
@@ -46,67 +53,81 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 // hover stats display
 .fighter.name{
   position: absolute;
-
+  font-size: 23px;
+  font-size: 1.3vw;
+  overflow: hidden;
+  font-family: 'Rubik Wet Paint', cursive;
   position: absolute;
-  top:0;
-  left: 20px;
+  top: 31px;
+  left: 50px;
+  width: 70%;
 }
 
-.fighter-stats {
+.fighter-info {
+  display: flex;
+  flex-direction: row;
   position: absolute;
-  bottom: 50px;
-  left: 20px;
+  bottom: 41px;
+  left: 41px;
+  width: 82%;
+  height: 104px;
+  font-family: 'New Rocker';
+
+  .description {
+    width: 80%;
+    overflow: hidden;
+    line-break: strict;
+    padding-left: 5px;
+    padding-top: 6px;
+  }
+
+  .stats {
+    width: 20%;
+    text-align: left;
+    padding-left: 15px;
+  }
+}
+
+.search-bar {
 
 }
 
 
-
-.character_select {
+.character-select {
   display: flex;
   flex-direction: column;
   width: 50vw;
-
+  margin-right: 100px;
 }
 
-.all_characters {
+.all-characters {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
 
-
-  .character_card {
+  .character-card {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: start;
     align-items: center;
+    border: 3px solid black;
+    //background-image: asset-url("avatar-frame.png");
+    //background-size: cover;
 
-
-    &.new {
-      color: black;
+    :hover {
+      border: 3px solid red;
     }
 
-    &.existing {
-      color: black;
-    }
-
-  }
-
-  a {
-    color: black;
-    &:hover {
-      color: red;
+    .new {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
-}
-
-h1 {
-  text-align: center;
-  padding: 30px;
-  font-family: 'rubik';
 }

@@ -8,11 +8,22 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.fighter = @fighter
     @booking.user = current_user
+    @booking.price = (@booking.expiration_date - @booking.starting_date) * @fighter.price
 
     if @booking.save
       redirect_to my_bookings_path
     else
       render "fighters/show", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status]
+    if @booking.save
+      redirect_to my_bookings_path
+    else
+      render "pages/my_fighters", status: :unprocessable_entity
     end
   end
 

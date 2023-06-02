@@ -47,24 +47,22 @@
   justify-content: center;
   align-items: center;
 
-  p {
-    text-align: center;
-    margin-top: 30px;
-    background-color: red;
-    border-radius: 5px;
-  }
 }
 
 // hover stats display
-.fighter {
+.fighter.name{
   position: absolute;
 
-  // specific position for name etc.
-  &.name {
-    position: absolute;
-    top:0;
-    left: 0;
-  }
+  position: absolute;
+  top:0;
+  left: 20px;
+}
+
+.fighter-stats {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+
 }
 
 

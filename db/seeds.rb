@@ -45,7 +45,7 @@ puts "Creating fighters..."
 zelda = Fighter.new(
   name: "Princess Zelda",
   description: "Princess of Hyrule, her magic powers can banish the evil from the surface.",
-  price: 50,
+  price: 747,
   rating: "Legendary",
   max_stat: 99,
   strength: 77,
@@ -62,7 +62,7 @@ puts "Created Zelda"
 mario = Fighter.new(
   name: "Mario",
   description: "High jumper and Gumba Smasher",
-  price: 20,
+  price: 537,
   rating: "Epic",
   max_stat: 70,
   strength: 56,
@@ -79,7 +79,7 @@ puts "Created Mario"
 frodo = Fighter.new(
   name: "Frodo Baggins",
   description: "Ringbearer and Hero - also: Small feet",
-  price: 40,
+  price: 636,
   rating: "Legendary",
   max_stat: 85,
   strength: 77,
@@ -96,7 +96,7 @@ puts "Created Frodo"
 pato = Fighter.new(
   name: "Zenmaster Pato",
   description: "The best batch manager. Is a duck, so can't fly or fight well",
-  price: 34,
+  price: 126,
   rating: "Standard",
   max_stat: 23,
   strength: 20,
@@ -113,7 +113,7 @@ puts "Created Pato"
 simon = Fighter.new(
   name: "Simon - The Omnipotent",
   description: "Creator and Destroyer of the Universe",
-  price: 80,
+  price: 891,
   rating: "Legendary",
   max_stat: 99,
   strength: 99,
@@ -124,6 +124,125 @@ simon = Fighter.new(
 
 simon.save!
 puts "Created Simon"
+
+pablo = Fighter.new(
+  name: "Pablo - El conquistador",
+  description: "The ruler of the world",
+  price: 891,
+  rating: "Legendary",
+  max_stat: 99,
+  strength: 99,
+  defense: 99,
+  speed: 99,
+  user: User.all.sample
+)
+
+file = URI.open("https://cdn-icons-png.flaticon.com/512/1674/1674432.png")
+pablo.photo.attach(io: file, filename: "pablo.jpg", content_type: "image/jpg")
+pablo.save!
+puts "Created Pablo"
+
+pikachu = Fighter.new(
+  name: "Pikachu",
+  description: "The most adorable pokemon, he can electroCUTE you",
+  price: 510,
+  rating: "Epic",
+  max_stat: 60,
+  strength: 60,
+  defense: 50,
+  speed: 60,
+  user: User.all.sample
+)
+
+file = URI.open("https://pokemon-project.com/pokedex/img/sprite/Home/256/25-female.png")
+pikachu.photo.attach(io: file, filename: "pikachu.jpg", content_type: "image/jpg")
+pikachu.save!
+puts "Created Pikachu"
+
+homer = Fighter.new(
+  name: "Homer Simpson",
+  description: "Just the average american neighbour",
+  price: 159,
+  rating: "Standard",
+  max_stat: 23,
+  strength: 20,
+  defense: 23,
+  speed: 10,
+  user: User.all.sample
+)
+
+file = URI.open("https://aux.iconspalace.com/uploads/13270996061937856141.png")
+homer.photo.attach(io: file, filename: "homer.jpg", content_type: "image/jpg")
+homer.save!
+puts "Created Homer"
+
+god = Fighter.new(
+  name: "Almighty God",
+  description: "You must believe in him in order to gain power",
+  price: 9,
+  rating: "Standard",
+  max_stat: 1,
+  strength: 1,
+  defense: 1,
+  speed: 1,
+  user: User.all.sample
+)
+
+file = URI.open("https://i.pinimg.com/736x/94/4a/e8/944ae807a79e0ad01a70ae9485370395.jpg")
+god.photo.attach(io: file, filename: "god.jpg", content_type: "image/jpg")
+god.save!
+puts "Created God"
+
+supernova = Fighter.new(
+  name: "Supernova",
+  description: "The ultimate menace, a galaxy eater",
+  price: 759,
+  rating: "Legendary",
+  max_stat: 90,
+  strength: 90,
+  defense: 78,
+  speed: 85,
+  user: User.all.sample
+)
+
+file = URI.open("https://c-cl.cdn.smule.com/rs-s28/arr/25/7a/96e9c773-d021-4fc7-a1e1-c57f270fe1f0.jpg")
+supernova.photo.attach(io: file, filename: "supernova.jpg", content_type: "image/jpg")
+supernova.save!
+puts "Created Supernova"
+
+goku = Fighter.new(
+  name: "Goku",
+  description: "Child version, the hero everybody needs",
+  price: 342,
+  rating: "Premium",
+  max_stat: 45,
+  strength: 40,
+  defense: 30,
+  speed: 44,
+  user: User.all.sample
+)
+
+file = URI.open("https://cdn131.picsart.com/302747009214201.jpg?type=webp&to=crop&r=256")
+goku.photo.attach(io: file, filename: "goku.jpg", content_type: "image/jpg")
+goku.save!
+puts "Created Goku"
+
+wagon = Fighter.new(
+  name: "Le Wagon",
+  description: "The ultimate bootcamp",
+  price: 342,
+  rating: "Premium",
+  max_stat: 45,
+  strength: 40,
+  defense: 30,
+  speed: 44,
+  user: User.all.sample
+)
+
+file = URI.open("https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/lja06nqofw4jxofpkwea")
+wagon.photo.attach(io: file, filename: "wagon.jpg", content_type: "image/jpg")
+wagon.save!
+puts "Created Le Wagon"
 
 puts "Created #{Fighter.count} fighters"
 puts "Done seeding"

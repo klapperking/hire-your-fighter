@@ -1,58 +1,57 @@
 <div class="container-body-fighter">
-  <div>
     <div class="container">
         <% @bookings.each do |booking| %>
           <% if booking.status == "pending" && current_user == booking.fighter.user %>
             <h1>Pending bookings</h1>
             <div class="container-card-booking">
-            <div class="fighter-card">
-              <% if booking.fighter.photo.key %>
-              <div>
+              <div class="fighter-card">
+                <% if booking.fighter.photo.key %>
+                <div>
                   <div class="name-card">
-                  <div class="name">
-                    <%= booking.fighter.name %>
-                  </div>
-                  <% if booking.status == "pending" %>
-                    <div id="status-pending">
-                      <%= booking.status %>
+                    <div class="name">
+                      <%= booking.fighter.name %>
                     </div>
-                  <% elsif booking.status == "accepted" %>
-                    <div id="status-accepted">
-                      <%= booking.status %>
-                    </div>
-                    <% else %>
-                      <div id="status-rejected">
+                    <% if booking.status == "pending" %>
+                      <div id="status-pending">
                         <%= booking.status %>
                       </div>
+                    <% elsif booking.status == "accepted" %>
+                      <div id="status-accepted">
+                        <%= booking.status %>
+                      </div>
+                    <% else %>
+                        <div id="status-rejected">
+                          <%= booking.status %>
+                        </div>
                     <% end %>
-                  </div>
-                  <div class="fighter-img">
-                    <%= cl_image_tag booking.fighter.photo.key, crop: :fill %>
-                  </div>
+                </div>
+                <div class="fighter-img">
+                  <%= cl_image_tag booking.fighter.photo.key, crop: :fill %>
+                </div>
                 <% else %>
                   <div class="fighter-img">
                   <%= image_tag "question_mark.png", crop: :fill %>
                   </div>
                 <% end %>
                 </div>
-                <div class="booking-details">
-                  <div class="remaining-days">
-                    <p>From: <%= (booking.starting_date).strftime('%d/%m/%Y') %> To: <%= (booking.expiration_date).strftime('%d/%m/%Y') %></p>
+                  <div class="booking-details">
+                    <div class="remaining-days">
+                      <p>From: <%= (booking.starting_date).strftime('%d/%m/%Y') %> To: <%= (booking.expiration_date).strftime('%d/%m/%Y') %></p>
+                    </div>
+                    <div>
+                      <%= booking.price %>
+                    </div>
                   </div>
-                  <div>
-                    <%= booking.price %>
+                  <div class="action-request">
+                    <%= link_to "Accept", booking_path(booking, status: "accepted"), data: {turbo_method: :patch}, id: "accepted-status" %>
+                    <%= link_to "Reject", booking_path(booking, status: "rejected"), data: {turbo_method: :patch}, id: "rejected-status" %>
                   </div>
-                </div>
-                <div class="action-request">
-                  <%= link_to "Accept", booking_path(booking), id: "accepted-status" %>
-                  <%= link_to "Reject", booking_path(booking, status: "rejected"), data: {turbo_method: :patch}, id: "rejected-status" %>
-                </div>
-            </div>
-            <% end %>
-            </div>
+              </div>
+              <% end %>
+              </div>
         <% end %>
-    </div>
-    <div class="container">
+      </div>
+      <div class="container">
       <h1>My Fighters</h1>
       <div class="container-card-fighter">
         <% @fighters.each do |fighter| %>
@@ -78,5 +77,5 @@
         <% end %>
       </div>
     </div>
-  </div>
+    </div>
 </div>

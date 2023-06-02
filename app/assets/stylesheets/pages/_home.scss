@@ -62,3 +62,8 @@ a {
   -webkit-text-stroke: 0.1px;
   -webkit-text-stroke-color: red;
 }
+
+body {
+  background-image: asset-url('background.png');
+  background-size: cover;
+}

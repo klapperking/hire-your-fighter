@@ -2,11 +2,9 @@
   <div class="container">
     <div class="container-show">
       <div class="container-details">
+        <div class="container-character">
           <div class="card-img-attr">
             <div class="card-img" style="background-image:url('<%=  @fighter.photo.key ? "#{cl_image_path @fighter.photo.key}" : "#{image_path "question_mark.png"}" %>')">
-              <%= link_to edit_fighter_path(@fighter) do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
             </div>
             <div class="card-attr-price">
               <div class="card-attr">
@@ -23,32 +21,35 @@
                   <div class="progress-bar" style="width:<%= @fighter.speed %>%"><%= @fighter.speed %></div>
                 </div>
                 <% @average = (@fighter.strength + @fighter.defense) / 2  %>
-                <h4>Overall :</h4>
-                <div class="container-progress-bar">
-                  <div class="progress-bar" style="width:<%= @average %>%"><%= @average %></div>
+                <div class="overall-bar">
+                  <h4>Overall :</h4>
+                  <div class="container-progress-bar">
+                    <div class="progress-bar" style="width:<%= @average %>%"><%= @average %></div>
+                  </div>
                 </div>
-              </div>
-              <div class="card-price">
-                <h1><%= @fighter.price %></h1><h2> HYF</h2>
               </div>
             </div>
           </div>
-          <div class="card-description">
-            <p><%= @fighter.description %></p>
+          <div class="card-description-price">
+            <div class="card-description">
+              <p><%= @fighter.description %></p>
+            </div>
+            <div class="card-price">
+              <h1><%= @fighter.price %></h1><h2> HYF</h2>
+            </div>
           </div>
-          <div class="card-map">
-          </div>
+        </div>
       </div>
       <div class="container-form">
         <% if @fighter.user == current_user %>
           <h2>Update your character</h2>
           <%= render("form", fighter: @fighter) %>
-          <%= link_to "delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to "Delete", fighter_path(@fighter), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", }, class: "button-black button-delete" %>
         <% else %>
           <%= render("bookings/form_booking", booking: @booking, fighter: @fighter ) %>
         <% end %>
         <br>
-        <%= link_to "Back to all characters", fighters_path %>
+        <%= link_to "Back to all characters", fighters_path, class: "button-black" %>
       </div>
     </div>
   </div>

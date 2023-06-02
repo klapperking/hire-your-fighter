@@ -2,6 +2,7 @@ class Fighter < ApplicationRecord
   belongs_to :user
   has_many :users, through: :bookings
   has_one_attached :photo
+  has_many :bookings
 
   # fighter tiers ; tier => max stat num
   TIERS = {

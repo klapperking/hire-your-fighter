@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def my_fighters
     @fighters = Fighter.where('user_id = ?', current_user.id.to_s)
+    @bookings = Booking.all
   end
 
   def my_bookings

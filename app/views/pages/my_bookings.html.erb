@@ -2,31 +2,45 @@
   <h1>My bookings</h1>
   <div class="container">
     <% if @bookings.any? %>
-    <div class="container-card-fighter">
+    <div class="container-card-booking">
       <% @bookings.each do |booking| %>
         <div class="fighter-card">
           <% if booking.fighter.photo.key %>
-            <div class="fighter-image">
-              <%= cl_image_tag booking.fighter.photo.key, crop: :fill %>
+          <div>
+              <div class="name-card">
+              <div class="name">
+                <%= booking.fighter.name %>
+              </div>
+              <% if booking.status == "pending" %>
+                <div id="status-pending">
+                  <%= booking.status %>
+                </div>
+              <% elsif booking.status == "accepted" %>
+                <div id="status-accepted">
+                  <%= booking.status %>
+                </div>
+                <% else %>
+                  <div id="status-rejected">
+                    <%= booking.status %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="fighter-img">
+                <%= cl_image_tag booking.fighter.photo.key, crop: :fill %>
+              </div>
+            <% else %>
+              <div class="fighter-img">
+              <%= image_tag "question_mark.png", crop: :fill %>
+              </div>
+            <% end %>
             </div>
-          <% else %>
-            <div class="fighter-image">
-            <%= image_tag "question_mark.png", crop: :fill %>
-            </div>
-          <% end %>
-          <div class="name">
-            <%= booking.fighter.name %>
-          </div>
-          <div class="stats">
-            <p>Strength: <%= booking.fighter.strength %></p>
-            <p>Defense: <%= booking.fighter.defense %></p>
-            <p>Speed: <%= booking.fighter.speed %></p>
-          </div>
-          <div class="remaining-days">
-            <p>Booked from: </p>
-            <%= booking.starting_date %>
-            <p>Booked until: </p>
-            <%= booking.expiration_date %>
+            <div class="booking-details">
+              <div class="remaining-days">
+                <p>From: <%= (booking.starting_date).strftime('%d/%m/%Y') %> To: <%= (booking.expiration_date).strftime('%d/%m/%Y') %></p>
+              </div>
+              <div>
+                <%= booking.price %>
+              </div>
           </div>
         </div>
       <% end %>

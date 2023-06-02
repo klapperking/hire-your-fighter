@@ -5,3 +5,26 @@
   background-size: cover;
   padding-bottom: 20px;
 }
+
+.action-request {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#accepted-status {
+  padding: 5px;
+  background-color: green;
+  border-radius: 5px;
+  position: relative;
+  bottom: 10px;
+}
+
+#rejected-status {
+  padding: 5px;
+  background-color: rgb(255, 75, 75);
+  border-radius: 5px;
+  position: relative;
+  bottom: 10px;
+}

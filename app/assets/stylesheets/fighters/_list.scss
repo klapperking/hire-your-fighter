@@ -26,11 +26,12 @@
 }
 
 .fighter-image {
+  // Width, Height, Left, Top - Values chosen based on 400x650 Card Templates
   position: absolute;
-  width: 323px;
-  height: 302px;
-  left: 59px;
-  top: 131px;
+  width: 338px;
+  height: 308px;
+  left: 53px;
+  top: 108px;
   border: 3px solid black;
 
   img {
@@ -38,7 +39,6 @@
     height: 100%;
   }
 }
-
 
 .hover_character {
   width: 40vw;
@@ -54,6 +54,20 @@
     border-radius: 5px;
   }
 }
+
+// hover stats display
+.fighter {
+  position: absolute;
+
+  // specific position for name etc.
+  &.name {
+    position: absolute;
+    top:0;
+    left: 0;
+  }
+}
+
+
 
 .character_select {
   display: flex;
